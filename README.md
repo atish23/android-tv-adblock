@@ -41,22 +41,72 @@ Other apps on the TV may behave differently. Always test their main apps (sectio
   <img src="assets/step-by-step-guide.png" alt="Step-by-Step Setup Guide" width="100%">
 </p>
 
+---
+
+## 📸 Visual Step-by-Step Walkthrough (12-Slide Guide)
+
+For non-technical users, here is the complete visual guide from start to finish:
+
+<details open>
+<summary><b>🖼️ Click to expand / collapse the full visual slideshow</b></summary>
+<br>
+
+<p align="center">
+  <img src="assets/guide/01-title.png" alt="Slide 1 - Ad-Free TV in 5 Minutes" width="100%"><br><br>
+  <img src="assets/guide/02-what-this-does.png" alt="Slide 2 - What This Does" width="100%"><br><br>
+  <img src="assets/guide/03-tools-needed.png" alt="Slide 3 - What You Need" width="100%"><br><br>
+  <img src="assets/guide/04-roadmap.png" alt="Slide 4 - 3-Step Roadmap" width="100%"><br><br>
+  <img src="assets/guide/05-step1-developer-mode.png" alt="Slide 5 - Enable Developer Mode" width="100%"><br><br>
+  <img src="assets/guide/06-step2-usb-debugging.png" alt="Slide 6 - Turn ON USB Debugging" width="100%"><br><br>
+  <img src="assets/guide/07-step3-tv-ip.png" alt="Slide 7 - Find Your TV IP Address" width="100%"><br><br>
+  <img src="assets/guide/08-step4-download-installer.png" alt="Slide 8 - Download the 1-Click Installer" width="100%"><br><br>
+  <img src="assets/guide/09-step5-connect-tv.png" alt="Slide 9 - Run Script and Enter TV IP" width="100%"><br><br>
+  <img src="assets/guide/10-step6-approve-adb.png" alt="Slide 10 - Approve USB Debugging on TV Remote" width="100%"><br><br>
+  <img src="assets/guide/11-step7-approve-vpn.png" alt="Slide 11 - Approve Connection Request on TV Remote" width="100%"><br><br>
+  <img src="assets/guide/12-done.png" alt="Slide 12 - Setup Complete and Ad-Free" width="100%">
+</p>
+
+</details>
+
+---
+
 ### 🖱️ Option 1: 1-Click Installer (Easiest for Everyone)
 
 No terminal commands, no Homebrew, and no package manager required. The script automatically downloads portable ADB if missing:
 
-1. **On your TV**:
-   - Turn ON **Developer Options**: `Settings > Device Preferences > About > tap Build 7 times`.
-   - Turn ON **USB Debugging**: `Settings > Developer Options > USB Debugging`.
-   - Note your TV IP: `Settings > Network & Internet > select your Wi-Fi` (e.g. `192.168.1.45`).
-2. **On your Computer**:
+#### Phase 1: On Your TV (with TV Remote)
+1. Turn ON **Developer Options**: Go to `Settings > Device Preferences > About`, scroll down to **Build**, and press OK 7 times.
+2. Turn ON **USB Debugging**: Go back to `Settings > Developer Options > USB Debugging` and switch it ON.
+3. Note your **TV IP Address**: Go to `Settings > Network & Internet > select your Wi-Fi` (e.g. `192.168.1.45`).
+
+<p align="center">
+  <img src="assets/guide/05-step1-developer-mode.png" width="32%" alt="Step 1 Developer Mode">
+  <img src="assets/guide/06-step2-usb-debugging.png" width="32%" alt="Step 2 USB Debugging">
+  <img src="assets/guide/07-step3-tv-ip.png" width="32%" alt="Step 3 TV IP">
+</p>
+
+#### Phase 2: On Your Computer
+1. Connect your laptop to the **same Wi-Fi network** as the TV.
+2. Run the installer:
    - **Windows**: Double-click `setup-windows.bat`.
    - **Mac**: Double-click `setup-mac.command`.
-   - Type your TV's IP address when prompted and press Enter.
-3. **On your TV Screen**:
-   - Prompt 1: Check "Always allow from this computer" and select **OK** for USB debugging.
-   - Prompt 2: Select **OK** for the VPN Connection request.
-4. **Done!** Open Prime Video or JioHotstar and enjoy ad-free playback.
+3. Type your TV IP address when prompted and press Enter.
+
+<p align="center">
+  <img src="assets/guide/08-step4-download-installer.png" width="48%" alt="Step 4 Download Installer">
+  <img src="assets/guide/09-step5-connect-tv.png" width="48%" alt="Step 5 Run Installer">
+</p>
+
+#### Phase 3: On Your TV Screen (Press OK with Remote)
+1. **Prompt 1 (USB Debugging)**: Check "Always allow from this computer" and select **OK**.
+2. **Prompt 2 (Connection Request)**: Select **OK** for the VPN Connection request.
+3. **Done!** Open Prime Video or JioHotstar and enjoy ad-free streaming.
+
+<p align="center">
+  <img src="assets/guide/10-step6-approve-adb.png" width="32%" alt="Step 6 Approve USB Debugging">
+  <img src="assets/guide/11-step7-approve-vpn.png" width="32%" alt="Step 7 Approve VPN">
+  <img src="assets/guide/12-done.png" width="32%" alt="Step 8 Enjoy Ad-Free">
+</p>
 
 ---
 
