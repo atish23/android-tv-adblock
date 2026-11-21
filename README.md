@@ -19,7 +19,7 @@ Files in this folder:
 You get:
 - Prime Video: no ads at the mid-roll yellow dots (when Prime serves them from its `vod-dash-pv` servers).
 - JioHotstar: no ads in our tests.
-- YouTube and ZEE5 keep working.
+- YouTube, Netflix, and ZEE5 keep working.
 - Starts by itself when the TV starts, and keeps working when the public IP changes.
 
 You do not get:
@@ -195,6 +195,7 @@ sed -i '' -E \
   -e 's#^fallbackDNS = .*#fallbackDNS = [1.1.1.1]::443::DOH::https://cloudflare-dns.com/dns-query; [9.9.9.9]::443::DOH::https://dns.quad9.net/dns-query#' \
   -e '/^filterAutoUpdateURL_switchs/ s/true/false/g' \
   -e 's/^showInitialInfoPopUp = .*/showInitialInfoPopUp = false/' \
+  -e 's/^androidAppWhiteList = .*/androidAppWhiteList = com.netflix.ninja/' \
   dnsfilter.conf
 ```
 What each line does:
@@ -202,6 +203,7 @@ What each line does:
 - `fallbackDNS = ...`: upstream resolvers that do NOT filter (Cloudflare and Quad9 over encrypted DNS), so our own rules are the only filter.
 - `filterAutoUpdateURL_switchs ... false`: turn off all the app's big default ad lists. They block Amazon servers that Prime Video needs (movies failed with "Something went wrong" until we removed them).
 - `showInitialInfoPopUp = false`: no first-run popup on the TV.
+- `androidAppWhiteList = com.netflix.ninja`: bypasses the local VPN for Netflix so Netflix avoids VPN detection and boots instantly without hanging.
 
 **B5. Push settings and our rules to the TV.**
 ```bash
@@ -303,6 +305,7 @@ If an app still shows ads:
 | No VPN prompt on the TV | App not started | Press Start in the app, or run the `am start` command again |
 | Websites do not load, "unknown host" | Filter running but its upstream failed, or Private DNS is on | Set `private_dns_mode off`, then `adb shell am force-stop dnsfilter.android` and start it again. As a last resort: uninstall the app, DNS returns to the network's |
 | Movies fail with "Something went wrong" | A needed host is blocked (often a big list is on) | Section 9: un-block the newest blocked host; confirm all default lists are off |
+| Netflix stuck on loading or logo | Netflix detects local VPN interface | Whitelist Netflix in filter config: add com.netflix.ninja to androidAppWhiteList |
 | ZEE5 stuck on play | `imasdk.googleapis.com` blocked | Do not block it (already excluded in our file) |
 | Ads come back after TV restart | Filter not yet started, or killed | Wait a minute after boot; confirm Always-on VPN is set; check `pidof` |
 | Filter app missing from the TV menu | It is a phone app | Normal. Open with `adb shell am start -n dnsfilter.android/.DNSProxyActivity`, or Settings, Apps |

@@ -72,6 +72,7 @@ sed -E \
   -e 's#^fallbackDNS = .*#fallbackDNS = [1.1.1.1]::443::DOH::https://cloudflare-dns.com/dns-query; [9.9.9.9]::443::DOH::https://dns.quad9.net/dns-query#' \
   -e '/^filterAutoUpdateURL_switchs/ s/true/false/g' \
   -e 's/^showInitialInfoPopUp = .*/showInitialInfoPopUp = false/' \
+  -e 's/^androidAppWhiteList = .*/androidAppWhiteList = com.netflix.ninja/' \
   "$TMP/dnsfilter.conf.orig" > "$TMP/dnsfilter.conf"
 adb push "$TMP/dnsfilter.conf" "$CFG/dnsfilter.conf" >/dev/null
 adb push "$HERE/additionalHosts.txt" "$CFG/additionalHosts.txt" >/dev/null
