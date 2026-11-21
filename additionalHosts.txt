@@ -1,0 +1,22 @@
+# Own ad rules for personalDNSfilter (copy to .../PersonalDNSFilter/additionalHosts.txt on the TV).
+# One host per line. "*" is a wildcard. A plain host also blocks all its subdomains.
+# Verified on Hisense/Vu Android 11 TV, 2026-11-21. Re-derive with the playbook if apps change.
+
+# Prime Video ad CDN family (Fastly and numbered Akamai backups)
+vod-dash-pv.amazon.fastly-edge.com
+vod-dash-pv-ta.amazon.fastly-edge.com
+*vod-dash-pv*
+
+# JioHotstar ads
+*hesads*
+doubleclick.net
+googlesyndication.com
+tremorhub.com
+adsrvr.org
+doubleverify.com
+dv.tech
+scorecardresearch.com
+
+# DO NOT block imasdk.googleapis.com: the ZEE5 player hangs forever without it.
+# DO NOT block avoddashs3ww-a.akamaihd.net or *.vod-dash.main.amazon.pv-cdn.net: they carry the movie.
+# DO NOT use big general ad lists: they block Amazon telemetry hosts that Prime Video needs.
