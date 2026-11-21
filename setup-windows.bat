@@ -79,6 +79,7 @@ set "PKG=dnsfilter.android"
 set "ACT=dnsfilter.android/.DNSProxyActivity"
 set "CFG=/sdcard/Android/data/%PKG%/files/PersonalDNSFilter"
 set "APK_URL=https://f-droid.org/repo/dnsfilter.android_1506105.apk"
+set "APK_SHA=73489010f4d28800cc7ea8fa10b2c8b340c3f19ce81ba56760b4dc4054869039"
 
 echo.
 echo [2/6] Verifying ad-blocker APK...
@@ -86,11 +87,34 @@ if not exist "dnsfilter.apk" (
     echo     Downloading personalDNSfilter from F-Droid...
     powershell -NoProfile -ExecutionPolicy Bypass -Command "Invoke-WebRequest -Uri '%APK_URL%' -OutFile 'dnsfilter.apk'"
 )
+call :check_sha
+if "!SHA_OK!"=="0" (
+    echo [!] Checksum mismatch. Re-downloading once...
+    del dnsfilter.apk >nul 2>&1
+    powershell -NoProfile -ExecutionPolicy Bypass -Command "Invoke-WebRequest -Uri '%APK_URL%' -OutFile 'dnsfilter.apk'"
+    call :check_sha
+)
+if "!SHA_OK!"=="0" (
+    del dnsfilter.apk >nul 2>&1
+    echo [!] Checksum still does not match. Stopping, nothing was installed.
+    pause
+    exit /b 1
+)
+echo [+] APK checksum verified.
 
 rem 4. Install onto TV
 echo.
 echo [3/6] Installing onto TV...
-"%ADB_BIN%" -s "%SERIAL%" install -r dnsfilter.apk
+"%ADB_BIN%" -s "%SERIAL%" install -r dnsfilter.apk > install.log 2>&1
+findstr /c:"Success" install.log >nul
+if errorlevel 1 (
+    echo [!] Install failed:
+    type install.log
+    del install.log >nul 2>&1
+    pause
+    exit /b 1
+)
+del install.log >nul 2>&1
 echo [+] App installed successfully.
 
 rem 5. First run and VPN permission
@@ -118,7 +142,7 @@ echo [5/6] Applying optimized ad rules and whitelisting Netflix...
 
 "%ADB_BIN%" -s "%SERIAL%" pull "%CFG%/dnsfilter.conf" "dnsfilter.conf" >nul
 
-powershell -NoProfile -ExecutionPolicy Bypass -Command "(Get-Content 'dnsfilter.conf') -replace '^detectDNS = .*', 'detectDNS = false' -replace '\^fallbackDNS = .*', 'fallbackDNS = [1.1.1.1]::443::DOH::https://cloudflare-dns.com/dns-query; [9.9.9.9]::443::DOH::https://dns.quad9.net/dns-query' -replace 'filterAutoUpdateURL_switchs(.*)true', 'filterAutoUpdateURL_switchs$1false' -replace '^showInitialInfoPopUp = .*', 'showInitialInfoPopUp = false' -replace '^androidAppWhiteList = .*', 'androidAppWhiteList = com.netflix.ninja' | Set-Content 'dnsfilter.conf'"
+powershell -NoProfile -ExecutionPolicy Bypass -Command "(Get-Content 'dnsfilter.conf') -replace '^detectDNS = .*', 'detectDNS = false' -replace '^fallbackDNS = .*', 'fallbackDNS = [1.1.1.1]::443::DOH::https://cloudflare-dns.com/dns-query; [9.9.9.9]::443::DOH::https://dns.quad9.net/dns-query' -replace 'filterAutoUpdateURL_switchs(.*)true', 'filterAutoUpdateURL_switchs$1false' -replace '^showInitialInfoPopUp = .*', 'showInitialInfoPopUp = false' -replace '^androidAppWhiteList = .*', 'androidAppWhiteList = com.netflix.ninja' | Set-Content 'dnsfilter.conf'"
 
 "%ADB_BIN%" -s "%SERIAL%" push "dnsfilter.conf" "%CFG%/dnsfilter.conf" >nul
 "%ADB_BIN%" -s "%SERIAL%" push "additionalHosts.txt" "%CFG%/additionalHosts.txt" >nul
@@ -133,15 +157,30 @@ echo [6/6] Locking Always-on VPN and starting service...
 timeout /t 4 >nul
 "%ADB_BIN%" -s "%SERIAL%" shell input keyevent KEYCODE_HOME >nul 2>&1
 
+set "PID="
+for /f "tokens=*" %%a in ('"%ADB_BIN%" -s "%SERIAL%" shell pidof %PKG% 2^>nul') do set "PID=%%a"
 echo.
-echo ================================================================
-echo   SUCCESS: Ad blocking is fully configured and active on TV!
-echo ================================================================
-echo   - Prime Video ads: Blocked
-echo   - JioHotstar ads: Blocked
-echo   - Netflix: Whitelisted (starts instantly, no VPN blocks)
-echo   - Auto-start: Enabled on TV boot
-echo.
-echo Open Prime Video or JioHotstar on your TV to test!
+if defined PID (
+    echo ================================================================
+    echo   SUCCESS: Ad blocking is fully configured and active on TV!
+    echo ================================================================
+    echo   - Prime Video ads: Blocked
+    echo   - JioHotstar ads: Blocked
+    echo   - Netflix: Whitelisted, starts instantly, no VPN blocks
+    echo   - Auto-start: Enabled on TV boot
+    echo.
+    echo Open Prime Video or JioHotstar on your TV to test!
+) else (
+    echo [!] Setup finished, but the filter is not running yet.
+    echo     Open personalDNSfilter on the TV, press Start, and press OK on the VPN request.
+)
 echo.
 pause
+exit /b 0
+
+:check_sha
+set "SHA_OK=0"
+for /f "usebackq tokens=*" %%h in (`powershell -NoProfile -Command "(Get-FileHash -Algorithm SHA256 'dnsfilter.apk').Hash.ToLower()"`) do (
+    if /i "%%h"=="%APK_SHA%" set "SHA_OK=1"
+)
+exit /b 0

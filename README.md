@@ -4,6 +4,12 @@
 
 # Android TV Ad-Block (Zero Hardware, 100% Free)
 
+> [!CAUTION]
+> # ⚠️ DO IT AT YOUR OWN RISK. NOTHING IS ON ME.
+> **Some users report that JioHotstar temporarily locks accounts (about 24 hours, error NM-1001_429 "Unusual activity detected") when it suspects ad blocking, a VPN or a proxy. This is not officially confirmed, and we have not seen it ourselves, but it is possible.** Blocking ads may also break a streaming service's terms of use. You use this guide, the scripts and the rules entirely at your own risk; the author takes no responsibility for any account lock, ban, broken app or any other problem.
+>
+> Want to stay safe on Hotstar? Let Hotstar bypass the filter, like Netflix: set `androidAppWhiteList = com.netflix.ninja,in.startv.hotstar` (section 6, B4). Hotstar ads come back, Prime Video stays ad-free.
+
 A free, open-source local DNS filter runs directly on the TV itself and answers DNS lookups. Ad servers get a dead-end answer (0.0.0.0), while real video content streams normally at full HD/4K quality. No account, no cloud subscription, no public IP to link, and no Raspberry Pi required.
 
 This setup was proven on Hisense/Vu Android 11 TV (Prime Video, JioHotstar, Netflix, ZEE5, YouTube). Nothing here modifies any streaming app.

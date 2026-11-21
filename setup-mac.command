@@ -96,15 +96,31 @@ fi
 
 CURRENT_SHA="$(shasum -a 256 dnsfilter.apk | awk '{print $1}')"
 if [ "$CURRENT_SHA" != "$APK_SHA" ]; then
-    echo -e "${C_RED}[!] Checksum mismatch on APK. Re-downloading...${C_RESET}"
+    echo -e "${C_YELLOW}[!] Checksum mismatch on APK. Re-downloading once...${C_RESET}"
     rm -f dnsfilter.apk
     curl -fL --max-time 120 -o dnsfilter.apk "$APK_URL"
+    CURRENT_SHA="$(shasum -a 256 dnsfilter.apk | awk '{print $1}')"
+    if [ "$CURRENT_SHA" != "$APK_SHA" ]; then
+        rm -f dnsfilter.apk
+        echo -e "${C_RED}[!] Checksum still does not match. Stopping, nothing was installed.${C_RESET}"
+        echo "    Expected: $APK_SHA"
+        echo "    Got:      $CURRENT_SHA"
+        read -rp "Press [Enter] to exit..."
+        exit 1
+    fi
 fi
+echo -e "${C_GREEN}[+] APK checksum verified.${C_RESET}"
 
 # 4. Install onto TV
 echo ""
 echo -e "${C_YELLOW}[3/6] Installing onto TV...${C_RESET}"
-$ADB_BIN -s "$SERIAL" install -r dnsfilter.apk | tail -n 1
+INSTALL_OUT="$($ADB_BIN -s "$SERIAL" install -r dnsfilter.apk 2>&1 || true)"
+if ! echo "$INSTALL_OUT" | grep -q "Success"; then
+    echo -e "${C_RED}[!] Install failed:${C_RESET}"
+    echo "$INSTALL_OUT" | tail -n 3
+    read -rp "Press [Enter] to exit..."
+    exit 1
+fi
 echo -e "${C_GREEN}[+] App installed successfully.${C_RESET}"
 
 # 5. First run and VPN permission
