@@ -1,0 +1,24 @@
+name: Add ads blocking for a new app
+description: Suggest ad hosts for an app we do not cover yet
+labels: [new-rule]
+body:
+  - type: input
+    id: app
+    attributes:
+      label: App name and package
+      placeholder: SonyLIV (com.sonyliv)
+    validations:
+      required: true
+  - type: textarea
+    id: hosts
+    attributes:
+      label: Ad hosts you found
+      description: Hosts asked for only around the ad (README section 9). Paste the log lines.
+      render: text
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: Blocking these hosts does not stop the show itself from playing
+        - label: YouTube still works with these hosts blocked

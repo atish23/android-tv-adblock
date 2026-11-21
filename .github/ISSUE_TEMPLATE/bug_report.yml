@@ -1,0 +1,41 @@
+name: Something is broken
+description: An app stops working, the installer fails, or ads still show
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What did you do, what did you expect, what did you see?
+    validations:
+      required: true
+  - type: input
+    id: tv
+    attributes:
+      label: TV brand, model and Android version
+      placeholder: Hisense 55A6, Android 11
+    validations:
+      required: true
+  - type: dropdown
+    id: install
+    attributes:
+      label: How did you install?
+      options:
+        - 1-click installer (Windows)
+        - 1-click installer (Mac)
+        - install-tvfilter.sh
+        - By hand (section 6 B)
+        - AI agent prompt
+    validations:
+      required: true
+  - type: input
+    id: app
+    attributes:
+      label: Which app?
+      placeholder: Prime Video / JioHotstar / ZEE5 / Netflix / YouTube / other
+  - type: textarea
+    id: log
+    attributes:
+      label: Installer output or filter log
+      description: Paste the installer output, or the log lines from README section 8. Remove any personal IP addresses.
+      render: text

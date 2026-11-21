@@ -22,6 +22,7 @@ This setup was proven on Hisense/Vu Android 11 TV (Prime Video, JioHotstar, Netf
 - `additionalHosts.txt`: Tailored ad rules loaded onto the TV.
 - `assets/`: High-resolution visual setup infographics and architecture banners.
 - `README.md`: Complete field guide, runbook, and troubleshooting.
+- `CONTRIBUTING.md`: How to add rules or fixes through a pull request.
 
 ---
 
@@ -443,6 +444,18 @@ adb shell settings put secure always_on_vpn_app dnsfilter.android
 adb shell pidof dnsfilter.android
 adb shell dumpsys connectivity | grep -oE "DnsAddresses: \[[^]]*\]" | sort -u
 ```
+
+---
+
+## 🤝 Contributing
+
+This is an open source project and help is welcome: new ad rules for other apps, fixes when an app breaks, tested TV models, installer fixes and clearer docs.
+
+- `main` is protected: changes come in through **pull requests** only, reviewed by the maintainer.
+- Start here: [CONTRIBUTING.md](CONTRIBUTING.md) (fork, branch, test on a real TV, open a PR).
+- Found a bug or want a new app covered? [Open an issue](../../issues/new/choose).
+- Security problem? Report it privately, see [SECURITY.md](SECURITY.md).
+- Please follow the [Code of Conduct](CODE_OF_CONDUCT.md).
 
 ---
 
