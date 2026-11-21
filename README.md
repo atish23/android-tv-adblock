@@ -29,7 +29,39 @@ You do not get:
 
 Other apps on the TV may behave differently. Always test their main apps (section 8).
 
-## 1. What you need
+---
+
+## 🤖 Easiest Setup: 1-Prompt AI Agent (Antigravity / Claude Code / Cursor)
+
+If you are not a developer and do not want to deal with terminal commands, installing `adb`, or running shell scripts manually, you can let an AI coding agent (such as **Antigravity**, **Claude Code**, or **Cursor**) complete the entire installation for you.
+
+### What you need:
+1. Turn on **Developer options** on your TV (Settings > About > tap **Build** 7 times, then turn ON **USB debugging**).
+2. Find your TV's IP address (Settings > Network & Internet > select your Wi-Fi, for example `192.168.1.45`).
+3. Make sure your computer is on the same Wi-Fi network as the TV.
+
+### Copy and paste this prompt into your AI agent:
+
+```text
+I want to block ads on my Android TV (Prime Video and JioHotstar) using this open-source project: https://github.com/atish23/android-tv-adblock
+
+My TV is on the same Wi-Fi network at IP address: [INSERT_YOUR_TV_IP_HERE]
+
+Please handle the complete automated setup for me:
+1. Clone the repository if not already in the project directory.
+2. Check if 'adb' (Android platform tools) is installed on this computer; if not, install it automatically.
+3. Connect to my TV at [INSERT_YOUR_TV_IP_HERE]:5555 and notify me when I need to click "Always allow" on my TV screen.
+4. Run the automated installer script (./install-tvfilter.sh [INSERT_YOUR_TV_IP_HERE]).
+5. Prompt me when the TV displays the one-time "Connection request (VPN)" dialog so I can press OK on the remote.
+6. Verify that the filter is running (process active, Private DNS off, Always-on VPN enabled).
+7. Confirm when ready and streaming apps are ready to test.
+```
+
+The AI agent will run the commands, install any missing tools, configure the TV, and verify that the ad blocker is active. All you need to do is press "OK" on your TV remote when the two permission prompts appear on your TV screen.
+
+---
+
+## 1. What you need (Manual / Developer Path)
 
 - A laptop or Mac on the SAME Wi-Fi/LAN as the TV (or on a remote link, see section 11).
 - An Android TV or Google TV (Android 8 or newer). Fire TV is different: see the note in section 2.
