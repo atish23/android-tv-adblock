@@ -1,16 +1,20 @@
-# Block Prime Video and Hotstar ads on your Android TV (free, no AdGuard)
+<p align="center">
+  <img src="assets/hero-banner.png" alt="Android TV Ad-Block" width="100%">
+</p>
 
-A free, open source filter app runs on the TV itself and answers DNS lookups. Ad servers get a
-dead-end answer (0.0.0.0), everything else is forwarded normally. No account, no cloud service,
-no public IP to link, no extra device.
+# Android TV Ad-Block (Zero Hardware, 100% Free)
 
-This is the setup we proved on a Hisense/Vu Android 11 TV (Prime Video, JioHotstar, ZEE5, YouTube).
-Nothing here modifies any streaming app.
+A free, open-source local DNS filter runs directly on the TV itself and answers DNS lookups. Ad servers get a dead-end answer (0.0.0.0), while real video content streams normally at full HD/4K quality. No account, no cloud subscription, no public IP to link, and no Raspberry Pi required.
 
-Files in this folder:
-- `README.md`: this runbook.
-- `install-tvfilter.sh`: does sections 6 to 7 for you.
-- `additionalHosts.txt`: the ad rules that get loaded on the TV.
+This setup was proven on Hisense/Vu Android 11 TV (Prime Video, JioHotstar, Netflix, ZEE5, YouTube). Nothing here modifies any streaming app.
+
+### 📁 Files in this repository:
+- `setup-windows.bat`: **1-Click installer for Windows** (auto-downloads portable ADB, double-click to run).
+- `setup-mac.command`: **1-Click installer for Mac** (auto-downloads portable ADB, double-click to run).
+- `install-tvfilter.sh`: Linux and macOS Terminal installer (`./install-tvfilter.sh <TV_IP>`).
+- `additionalHosts.txt`: Tailored ad rules loaded onto the TV.
+- `assets/`: High-resolution visual setup infographics and architecture banners.
+- `README.md`: Complete field guide, runbook, and troubleshooting.
 
 ---
 
@@ -31,16 +35,34 @@ Other apps on the TV may behave differently. Always test their main apps (sectio
 
 ---
 
-## 🤖 Easiest Setup: 1-Prompt AI Agent (Antigravity / Claude Code / Cursor)
+## ⚡ Choose Your Setup Path
 
-If you are not a developer and do not want to deal with terminal commands, installing `adb`, or running shell scripts manually, you can let an AI coding agent (such as **Antigravity**, **Claude Code**, or **Cursor**) complete the entire installation for you.
+<p align="center">
+  <img src="assets/step-by-step-guide.png" alt="Step-by-Step Setup Guide" width="100%">
+</p>
 
-### What you need:
-1. Turn on **Developer options** on your TV (Settings > About > tap **Build** 7 times, then turn ON **USB debugging**).
-2. Find your TV's IP address (Settings > Network & Internet > select your Wi-Fi, for example `192.168.1.45`).
-3. Make sure your computer is on the same Wi-Fi network as the TV.
+### 🖱️ Option 1: 1-Click Installer (Easiest for Everyone)
 
-### Copy and paste this prompt into your AI agent:
+No terminal commands, no Homebrew, and no package manager required. The script automatically downloads portable ADB if missing:
+
+1. **On your TV**:
+   - Turn ON **Developer Options**: `Settings > Device Preferences > About > tap Build 7 times`.
+   - Turn ON **USB Debugging**: `Settings > Developer Options > USB Debugging`.
+   - Note your TV IP: `Settings > Network & Internet > select your Wi-Fi` (e.g. `192.168.1.45`).
+2. **On your Computer**:
+   - **Windows**: Double-click `setup-windows.bat`.
+   - **Mac**: Double-click `setup-mac.command`.
+   - Type your TV's IP address when prompted and press Enter.
+3. **On your TV Screen**:
+   - Prompt 1: Check "Always allow from this computer" and select **OK** for USB debugging.
+   - Prompt 2: Select **OK** for the VPN Connection request.
+4. **Done!** Open Prime Video or JioHotstar and enjoy ad-free playback.
+
+---
+
+### 🤖 Option 2: 1-Prompt AI Agent (Antigravity / Claude Code / Cursor)
+
+If you have an AI coding assistant (such as **Antigravity**, **Claude Code**, or **Cursor**), simply copy and paste this single prompt:
 
 ```text
 I want to block ads on my Android TV (Prime Video and JioHotstar) using this open-source project: https://github.com/atish23/android-tv-adblock
@@ -57,7 +79,15 @@ Please handle the complete automated setup for me:
 7. Confirm when ready and streaming apps are ready to test.
 ```
 
-The AI agent will run the commands, install any missing tools, configure the TV, and verify that the ad blocker is active. All you need to do is press "OK" on your TV remote when the two permission prompts appear on your TV screen.
+---
+
+### 💻 Option 3: Manual Terminal Script (Developers)
+
+If you prefer using Terminal directly:
+```bash
+./install-tvfilter.sh <TV_IP>
+```
+Example: `./install-tvfilter.sh 192.168.1.45`
 
 ---
 

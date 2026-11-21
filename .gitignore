@@ -1,2 +1,5 @@
 dnsfilter.conf.orig
+dnsfilter.apk
+platform-tools/
+*.zip
 .DS_Store
