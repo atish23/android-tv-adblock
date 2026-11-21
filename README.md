@@ -108,9 +108,15 @@ adb shell getprop ro.build.version.release
 
 macOS or Linux:
 ```bash
+git clone https://github.com/atish23/android-tv-adblock.git
+```
+```bash
 cd android-tv-adblock
+```
+```bash
 ./install-tvfilter.sh <TV_IP>
 ```
+(No git? On the GitHub page use the green "Code" button, "Download ZIP", and unzip it.)
 It downloads the app from F-Droid, checks its SHA-256, installs it, asks you to press OK on the TV's
 connection request, writes our settings and rules, turns Private DNS off, sets Always-on VPN, and prints a check.
 Skip to section 8 when it says OK. Windows users: use section B, or run the script in WSL.
