@@ -11,6 +11,7 @@ This setup was proven on Hisense/Vu Android 11 TV (Prime Video, JioHotstar, Netf
 ### 📁 Files in this repository:
 - `setup-windows.bat`: **1-Click installer for Windows** (auto-downloads portable ADB, double-click to run).
 - `setup-mac.command`: **1-Click installer for Mac** (auto-downloads portable ADB, double-click to run).
+- `assets/guide/Ad-Free-TV-in-5-Minutes.pdf`: **Downloadable 12-slide visual PDF guide** for non-technical users.
 - `install-tvfilter.sh`: Linux and macOS Terminal installer (`./install-tvfilter.sh <TV_IP>`).
 - `additionalHosts.txt`: Tailored ad rules loaded onto the TV.
 - `assets/`: High-resolution visual setup infographics and architecture banners.
@@ -37,15 +38,22 @@ Other apps on the TV may behave differently. Always test their main apps (sectio
 
 ## ⚡ Choose Your Setup Path
 
-<p align="center">
-  <img src="assets/step-by-step-guide.png" alt="Step-by-Step Setup Guide" width="100%">
-</p>
+Choose the setup method that best suits your comfort level:
+- **Option 1**: 1-Click Installer (Double-click file on your laptop, zero coding required)
+- **Option 2**: 1-Prompt AI Agent (Copy-paste single prompt into Antigravity, Claude Code, or Cursor)
+- **Option 3**: Manual Terminal Script (Run `./install-tvfilter.sh <TV_IP>` in Terminal)
 
 ---
 
 ## 📸 Visual Step-by-Step Walkthrough (12-Slide Guide)
 
-For non-technical users, here is the complete visual guide from start to finish:
+For non-technical users, here is the complete visual guide from start to finish. You can view all slides below or download the standalone PDF presentation:
+
+<p align="center">
+  <a href="assets/guide/Ad-Free-TV-in-5-Minutes.pdf">
+    <img src="https://img.shields.io/badge/Download_Guide-PDF_(1.0_MB)-red?style=for-the-badge&logo=adobeacrobatreader&logoColor=white" alt="Download PDF Guide">
+  </a>
+</p>
 
 <details open>
 <summary><b>🖼️ Click to expand / collapse the full visual slideshow</b></summary>
