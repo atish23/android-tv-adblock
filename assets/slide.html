@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background-color: #0b0f19;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+</style>
+</head>
+<body>
+<div style="background-color: #0b0f19; color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; padding: 30px 20px; border-radius: 12px; max-width: 1200px; width: 1200px; margin: 0 auto;">
+  <!-- Header -->
+  <div style="text-align: center; margin-bottom: 35px;">
+    <span style="background: linear-gradient(90deg, #10b981, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 800; font-size: 15px; text-transform: uppercase; letter-spacing: 2px;">Android TV Ad-Block Setup Flow</span>
+    <h2 style="font-size: 32px; font-weight: 800; margin: 10px 0; color: #f3f4f6;">Zero Hardware. Zero Config. 1-Click Deployment.</h2>
+    <p style="color: #9ca3af; font-size: 16px; max-width: 600px; margin: 0 auto;">Get ad-free streaming directly on your smart TV using your laptop in under 20 seconds.</p>
+  </div>
+
+  <!-- Responsive Grid -->
+  <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
+    
+    <!-- Step 1 -->
+    <div style="background: rgba(17, 24, 39, 0.9); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 12px; padding: 22px; display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+          <span style="background: rgba(59, 130, 246, 0.2); color: #3b82f6; font-size: 11px; font-weight: bold; padding: 4px 8px; border-radius: 20px; text-transform: uppercase;">Step 1</span>
+          <span style="color: #6b7280; font-size: 12px;">TV Setup</span>
+        </div>
+        <h3 style="font-size: 18px; font-weight: 700; color: #f9fafb; margin: 0 0 8px 0;">Developer Mode</h3>
+        <p style="color: #9ca3af; font-size: 13px; line-height: 1.5; margin-bottom: 16px;">Go to <b>Settings &gt; About</b>, tap <b>Build 7 times</b> to enable Developer Mode. Turn <b>USB Debugging ON</b>, and note your TV IP.</p>
+      </div>
+      <div style="background: rgba(0,0,0,0.3); border-radius: 8px; padding: 14px; text-align: center;">
+        <svg viewBox="0 0 100 60" width="100%" height="auto" style="max-height: 80px;">
+          <rect x="10" y="10" width="80" height="40" rx="4" fill="#1f2937" stroke="#3b82f6" stroke-width="1.5"/>
+          <line x1="30" y1="50" x2="70" y2="50" stroke="#3b82f6" stroke-width="2"/>
+          <line x1="50" y1="50" x2="50" y2="56" stroke="#3b82f6" stroke-width="3"/>
+          <rect x="50" y="18" width="32" height="18" rx="2" fill="#111827"/>
+          <text x="66" y="27" fill="#10b981" font-size="5" font-weight="bold" text-anchor="middle">USB Debugging</text>
+          <text x="66" y="32" fill="#10b981" font-size="4" font-weight="bold" text-anchor="middle">[ ENABLED ]</text>
+          <circle cx="28" cy="30" r="8" fill="#3b82f6" opacity="0.3"/>
+          <text x="28" y="32" fill="#3b82f6" font-size="6" font-weight="bold" text-anchor="middle">7x</text>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div style="background: rgba(17, 24, 39, 0.9); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 12px; padding: 22px; display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+          <span style="background: rgba(16, 185, 129, 0.2); color: #10b981; font-size: 11px; font-weight: bold; padding: 4px 8px; border-radius: 20px; text-transform: uppercase;">Step 2</span>
+          <span style="color: #6b7280; font-size: 12px;">Computer 1-Click</span>
+        </div>
+        <h3 style="font-size: 18px; font-weight: 700; color: #f9fafb; margin: 0 0 8px 0;">Double-Click Setup</h3>
+        <p style="color: #9ca3af; font-size: 13px; line-height: 1.5; margin-bottom: 16px;">Connect laptop &amp; TV to same Wi-Fi. Run <b>setup-windows.bat</b> (Win) or <b>setup-mac.command</b> (Mac).</p>
+      </div>
+      <div style="background: rgba(0,0,0,0.3); border-radius: 8px; padding: 14px; text-align: center;">
+        <svg viewBox="0 0 100 60" width="100%" height="auto" style="max-height: 80px;">
+          <rect x="20" y="10" width="60" height="36" rx="3" fill="#1f2937" stroke="#10b981" stroke-width="1.5"/>
+          <line x1="15" y1="46" x2="85" y2="46" stroke="#10b981" stroke-width="2"/>
+          <rect x="42" y="46" width="16" height="4" fill="#111827"/>
+          <rect x="25" y="15" width="50" height="26" rx="1" fill="#111827"/>
+          <text x="50" y="23" fill="#10b981" font-size="4" text-anchor="middle" font-family="monospace">Deploying VPN...</text>
+          <text x="50" y="29" fill="#9ca3af" font-size="3" text-anchor="middle" font-family="monospace">&gt; setup-windows.bat 🚀</text>
+          <text x="50" y="36" fill="#10b981" font-size="4" font-weight="bold" text-anchor="middle" font-family="monospace">100% COMPLETE</text>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div style="background: rgba(17, 24, 39, 0.9); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 12px; padding: 22px; display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+          <span style="background: rgba(245, 158, 11, 0.2); color: #f59e0b; font-size: 11px; font-weight: bold; padding: 4px 8px; border-radius: 20px; text-transform: uppercase;">Step 3</span>
+          <span style="color: #6b7280; font-size: 12px;">Remote Approval</span>
+        </div>
+        <h3 style="font-size: 18px; font-weight: 700; color: #f9fafb; margin: 0 0 8px 0;">Accept TV Prompts</h3>
+        <p style="color: #9ca3af; font-size: 13px; line-height: 1.5; margin-bottom: 16px;">Watch the TV and press <b>OK</b> on 2 prompts: Allow USB Debugging (always) &amp; VPN Connection Request.</p>
+      </div>
+      <div style="background: rgba(0,0,0,0.3); border-radius: 8px; padding: 14px; text-align: center;">
+        <svg viewBox="0 0 100 60" width="100%" height="auto" style="max-height: 80px;">
+          <rect x="5" y="10" width="55" height="32" rx="4" fill="#111827" stroke="#f59e0b" stroke-width="1"/>
+          <text x="32" y="18" fill="#f3f4f6" font-size="4" font-weight="bold" text-anchor="middle">Connection Request</text>
+          <text x="32" y="24" fill="#9ca3af" font-size="3" text-anchor="middle">Allow local VPN (10.10.10.10)?</text>
+          <rect x="22" y="29" width="20" height="8" rx="2" fill="#f59e0b"/>
+          <text x="32" y="34" fill="#000" font-weight="bold" font-size="4" text-anchor="middle">[ OK ]</text>
+          
+          <rect x="72" y="12" width="16" height="38" rx="4" fill="#1f2937" stroke="#4b5563" stroke-width="1.5"/>
+          <circle cx="80" cy="22" r="5" fill="#111827"/>
+          <circle cx="80" cy="22" r="2" fill="#f59e0b"/>
+          <rect x="76" y="32" width="8" height="3" rx="1" fill="#4b5563"/>
+          <rect x="76" y="38" width="8" height="3" rx="1" fill="#4b5563"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Step 4 -->
+    <div style="background: rgba(17, 24, 39, 0.9); border: 1px solid rgba(16, 185, 129, 0.4); border-radius: 12px; padding: 22px; display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+          <span style="background: rgba(16, 185, 129, 0.2); color: #10b981; font-size: 11px; font-weight: bold; padding: 4px 8px; border-radius: 20px; text-transform: uppercase;">Step 4</span>
+          <span style="color: #10b981; font-size: 12px; font-weight: bold;">✔ Ready</span>
+        </div>
+        <h3 style="font-size: 18px; font-weight: 700; color: #f9fafb; margin: 0 0 8px 0;">Enjoy Zero Ads!</h3>
+        <p style="color: #9ca3af; font-size: 13px; line-height: 1.5; margin-bottom: 16px;">Stream seamlessly. Zero ads on Prime &amp; JioHotstar; Netflix whitelisted for flawless connection.</p>
+      </div>
+      <div style="background: rgba(16, 185, 129, 0.05); border-radius: 8px; padding: 14px; text-align: center;">
+        <svg viewBox="0 0 100 60" width="100%" height="auto" style="max-height: 80px;">
+          <rect x="15" y="10" width="70" height="38" rx="4" fill="#1f2937" stroke="#10b981" stroke-width="1.5"/>
+          <circle cx="50" cy="26" r="10" fill="#10b981" opacity="0.2"/>
+          <path d="M50 19 L56 22 L56 28 C56 32 50 35 50 35 C50 35 44 32 44 28 L44 22 Z" fill="#10b981" stroke="#ffffff" stroke-width="0.8"/>
+          <path d="M47 26.5 L49.5 29 L53.5 24" fill="none" stroke="#ffffff" stroke-width="1" stroke-linecap="round"/>
+          <text x="50" y="44" fill="#10b981" font-size="4" font-weight="bold" text-anchor="middle">AD-BLOCK ACTIVE (10.10.10.10)</text>
+          <line x1="20" y1="36" x2="80" y2="36" stroke="#374151" stroke-width="1.5"/>
+          <circle cx="20" cy="36" r="1.5" fill="#3b82f6"/>
+        </svg>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
